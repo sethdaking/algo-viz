@@ -26,7 +26,7 @@ const nodePositions = [
 ];
 
 export default function BFSComponent() {
-  const [graph, setGraph] = useState(initialGraph);
+  const [graph] = useState(initialGraph);
   const [visited, setVisited] = useState<boolean[]>(new Array(initialGraph.length).fill(false));
   const [animationSpeed] = useState(500); // Animation speed in milliseconds
 

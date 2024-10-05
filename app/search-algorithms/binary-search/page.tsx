@@ -128,7 +128,7 @@ export default function BinarySearchComponent() {
 
           <p className="mt-2"><strong>3. Time Complexity:</strong> O(log n) as the search space is halved with each iteration.</p>
           <p className="mt-2"><strong>4. Space Complexity:</strong> O(1) for the iterative version, as it only requires a few extra variables.</p>
-          <p className="mt-2"><strong>5. Stability:</strong> Binary Search is not concerned with stability as it's not a sorting algorithm.</p>
+          <p className="mt-2"><strong>5. Stability:</strong> Binary Search is not concerned with stability as it&apos;s not a sorting algorithm.</p>
           <p className="mt-2"><strong>6. Usage:</strong> Binary Search is commonly used in scenarios where the data is already sorted, such as searching in dictionaries, databases, or other sorted structures.</p>
         </div>
       </div>

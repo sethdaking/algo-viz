@@ -30,7 +30,7 @@ const nodePositions = [
 
 export default function BellmanFordComponent() {
   const [distances, setDistances] = useState<number[]>(new Array(7).fill(Infinity));
-  const [predecessors, setPredecessors] = useState<number[]>(new Array(7).fill(-1));
+  const [, setPredecessors] = useState<number[]>(new Array(7).fill(-1));
   const [animationSpeed] = useState(500); // Animation speed in milliseconds
   const [source] = useState(0); // Starting from Node 0
 

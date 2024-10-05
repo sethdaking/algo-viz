@@ -19,8 +19,8 @@ const nodePositions = [
 ];
 
 export default function DijkstraComponent() {
-  const [graph, setGraph] = useState(initialGraph);
-  const [source, setSource] = useState<number>(0);
+  const [graph] = useState(initialGraph);
+  const [source] = useState<number>(0);
   const [distances, setDistances] = useState<number[]>([]);
   const [previous, setPrevious] = useState<(number | null)[]>([]); // Store previous nodes
   const [visited, setVisited] = useState<boolean[]>([]);

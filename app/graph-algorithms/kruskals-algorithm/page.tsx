@@ -156,7 +156,7 @@ export default function KruskalComponent() {
             ))}
           </ul>
         ) : (
-          <p>No MST formed yet. Click "Run Kruskal&apos;s Algorithm" to see the result.</p>
+          <p>No MST formed yet. Click &quot;Run Kruskal&apos;s Algorithm&quot; to see the result.</p>
         )}
             <div className="p-4">
     <h2 className="text-3xl text-accent">Kruskal&apos;s Algorithm</h2>

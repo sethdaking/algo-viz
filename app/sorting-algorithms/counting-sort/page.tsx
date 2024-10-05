@@ -4,16 +4,16 @@ import { useState, useEffect } from 'react';
 import generateArray from '@/utils/generateArray'; // Import the utility
 
 export default function CountingSort() {
-  const [array, setArray] = useState(generateArray(50));
+  const [array, setArray] = useState(generateArray(50, 999));
   const [algorithm] = useState('Counting Sort');
   const [speed] = useState(100); // Sorting speed
 
   useEffect(() => {
-    setArray(generateArray(50)); // Use the utility function
+    setArray(generateArray(50, 999)); // Use the utility function
   }, []);
 
   const handleShuffle = () => {
-    setArray(generateArray(50)); // Use the utility function
+    setArray(generateArray(50, 999)); // Use the utility function
   };
 
   const handleSort = async () => {

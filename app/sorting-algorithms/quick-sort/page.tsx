@@ -1,26 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-'use client'
+'use client';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import generateArray from '@/utils/generateArray'; // Import the utility
 
 export default function QuickSort() {
-  const [array, setArray] = useState(generateArray(50));
+  const [array, setArray] = useState(generateArray(50, 999));
   const [speed, setSpeed] = useState(100); // Sorting speed
 
   useEffect(() => {
-    setArray(generateArray(50)); // Use the utility function
+    setArray(generateArray(50, 999)); // Use the utility function
   }, []);
 
   const handleShuffle = () => {
-    setArray(generateArray(50)); // Use the utility function
+    setArray(generateArray(50, 999)); // Use the utility function
   };
 
   const handleSort = async () => {
     await quickSort(array, 0, array.length - 1);
   };
 
-  const quickSort = async (arr, low, high) => {
+  const quickSort = async (arr: number[], low: number, high: number) => {
     if (low < high) {
       const pi = await partition(arr, low, high);
 
@@ -33,7 +33,7 @@ export default function QuickSort() {
     setArray([...arr]);
   };
 
-  const partition = async (arr, low, high) => {
+  const partition = async (arr: number[], low: number, high: number) => {
     const pivot = arr[high];
     let i = low - 1;
 

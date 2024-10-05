@@ -1,7 +1,6 @@
 // utils/generateArray.js
-const generateArray = (length) => {
-    return Array.from({ length }, () => Math.floor(Math.random() * 100));
-  };
-  
-  export default generateArray;
-  
+const generateArray = (length: number, maxValue: number) => {
+  return Array.from({ length }, () => Math.floor(Math.random() * maxValue));
+};
+
+export default generateArray;
