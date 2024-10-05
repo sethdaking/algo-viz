@@ -1,25 +1,25 @@
-'use client'
+'use client';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import generateArray from '@/utils/generateArray'; // Import the utility
 
 export default function MergeSort() {
-  const [array, setArray] = useState(generateArray(50));
+  const [array, setArray] = useState(generateArray(50, 999));
   const [speed] = useState(100); // Sorting speed
 
   useEffect(() => {
-    setArray(generateArray(50)); // Use the utility function
+    setArray(generateArray(50, 999)); // Use the utility function
   }, []);
 
   const handleShuffle = () => {
-    setArray(generateArray(50)); // Use the utility function
+    setArray(generateArray(50, 999)); // Use the utility function
   };
 
   const handleSort = async () => {
     await mergeSort(array);
   };
 
-  const mergeSort = async (arr) => {
+  const mergeSort = async (arr: number[]): Promise<number[]> => {
     if (arr.length <= 1) return arr;
 
     const mid = Math.floor(arr.length / 2);
@@ -31,8 +31,8 @@ export default function MergeSort() {
     return sortedArray;
   };
 
-  const merge = async (left, right) => {
-    const result = [];
+  const merge = async (left: number[], right: number[]): Promise<number[]> => {
+    const result: number[] = [];
     let leftIndex = 0;
     let rightIndex = 0;
 
@@ -83,7 +83,7 @@ export default function MergeSort() {
         </div>
 
         {/* Technical overview of Merge Sort */}
-        <div className="mt-8  p-4 rounded shadow-lg">
+        <div className="mt-8 p-4 rounded shadow-lg">
           <h3 className="text-2xl font-bold">Merge Sort - Technical Overview</h3>
           <p className="mt-2"><strong>1. Algorithm Description:</strong> Merge Sort is a divide-and-conquer algorithm that divides the input array into two halves, recursively sorts both halves, and then merges the sorted halves back together.</p>
           
