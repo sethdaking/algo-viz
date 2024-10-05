@@ -1,101 +1,60 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { BsArrowDownRight } from 'react-icons/bs';
+import Link from "next/link";
+
+const algorithms = [
+  {
+    num: '01',
+    title: 'Sorting Algorithms',
+    description: 'Sorting algorithms are methods used to arrange elements of a list or array in a specific order, typically either ascending or descending. They are essential in computer science for tasks like data searching, organizing, and optimizing storage. Some popular sorting algorithms include Bubble Sort, which repeatedly swaps adjacent elements; Quick Sort, which partitions data around a pivot; and Merge Sort, which divides and merges sorted sub-arrays. Sorting algorithms can vary in efficiency, with some being more suitable for large datasets while others are easier to implement but slower on larger inputs.',
+    href: "/sorting-algorithms"
+  },
+  {
+    num: '02',
+    title: 'Search Algorithms',
+    description: 'Search algorithms are techniques used to retrieve information stored within data structures. They are crucial for locating specific data or items efficiently. Common search algorithms include Linear Search, which checks each element sequentially, and Binary Search, which divides the data in half repeatedly to locate a target value quickly. These algorithms vary in complexity and efficiency, making them suitable for different types of data structures and datasets.',
+    href: "/search-algorithms"
+  },
+  {
+    num: '03',
+    title: 'Graph Algorithms',
+    description: 'Graph algorithms are essential for solving problems related to networks and relationships between interconnected data points. They include various techniques like Depth First Search (DFS), Breadth First Search (BFS), Dijkstra’s Algorithm, and Minimum Spanning Tree algorithms, which help analyze and navigate graphs efficiently. These algorithms are widely used in fields such as social networks, transportation, and computer networking.',
+    href: "/graph-algorithms"
+  },
+
+]
+
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py:0'>
+      <div className='container mx-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-[60px]'>
+          {algorithms.map((algorithm, index) => {
+            return (
+              <div key={index} className='flex-1 flex flex-col justify-center gap-6 group'>
+                <div className='w-full flex justify-between items-center'>
+                  <div className='text-5xl font-extrabold text-outiline text-transparent group-hover:text-outline-hover transition-all duration-500'>
+                    {algorithm.num}
+                  </div>
+                  <Link href={algorithm.href} className='w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all
+                  duration-500 flex justify-center items-center hover:-rotate-45'>
+                    <BsArrowDownRight className='text-primary text-3xl'/>
+                  </Link>
+                </div>
+                <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500'>
+                  {algorithm.title}
+                </h2>
+                <p className='text-white/60'>{algorithm.description}</p>
+                <div className='border-b border-white/20'>
+                </div>
+              </div>
+            )
+          })}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+    </section>
+  )
 }
+
+export default Home;

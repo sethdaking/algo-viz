@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { JetBrains_Mono} from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrainsMono",
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,9 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jetbrainsMono.variable} antialiased`}
       >
-        {children}
+        <Header />
+
+    
+          {children}
+      
+        
       </body>
     </html>
   );
