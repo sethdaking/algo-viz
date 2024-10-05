@@ -2,7 +2,17 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-const initialGraph = [
+// Define the types for edges and graph nodes
+interface Edge {
+  to: number;
+}
+
+interface Node {
+  id: number;
+  edges: Edge[];
+}
+
+const initialGraph: Node[] = [
   { id: 0, edges: [{ to: 1 }, { to: 2 }] },
   { id: 1, edges: [{ to: 2 }] },
   { id: 2, edges: [{ to: 0 }, { to: 3 }] },
@@ -17,7 +27,7 @@ const nodePositions = [
 ];
 
 export default function KosarajuComponent() {
-  const [graph, setGraph] = useState(initialGraph);
+  const [graph] = useState<Node[]>(initialGraph);
   const [sccs, setSccs] = useState<number[][]>([]); // Store strongly connected components
   const [visited, setVisited] = useState<boolean[]>([]); // Track visited nodes
   const [animationSpeed] = useState(500); // Animation speed in milliseconds
@@ -37,7 +47,7 @@ export default function KosarajuComponent() {
     setSccs(newSccs);
   };
 
-  const dfsStack = async (graph: any[]) => {
+  const dfsStack = async (graph: Node[]) => {
     const stack: number[] = [];
     const visited = new Array(graph.length).fill(false);
 
@@ -49,7 +59,7 @@ export default function KosarajuComponent() {
     return stack; // Return the finishing order
   };
 
-  const dfsVisit = async (graph: any[], node: number, visited: boolean[], stack: number[]) => {
+  const dfsVisit = async (graph: Node[], node: number, visited: boolean[], stack: number[]) => {
     visited[node] = true;
     await highlightNode(node); // Highlight the current node
 
@@ -61,8 +71,8 @@ export default function KosarajuComponent() {
     stack.push(node); // Push the finished node onto the stack
   };
 
-  const transposeGraph = (graph: any[]) => {
-    const transposed: any[] = graph.map(() => ({ id: 0, edges: [] }));
+  const transposeGraph = (graph: Node[]) => {
+    const transposed: Node[] = graph.map(() => ({ id: 0, edges: [] }));
     graph.forEach((node) => {
       node.edges.forEach((edge) => {
         transposed[edge.to].edges.push({ to: node.id });
@@ -71,7 +81,7 @@ export default function KosarajuComponent() {
     return transposed;
   };
 
-  const dfsOnTransposedGraph = async (graph: any[], finishingOrder: number[]) => {
+  const dfsOnTransposedGraph = async (graph: Node[], finishingOrder: number[]) => {
     const visited = new Array(graph.length).fill(false);
     const sccs: number[][] = [];
 
@@ -86,7 +96,7 @@ export default function KosarajuComponent() {
     return sccs;
   };
 
-  const dfsOnTransposedVisit = async (graph: any[], node: number, visited: boolean[], currentSCC: number[]) => {
+  const dfsOnTransposedVisit = async (graph: Node[], node: number, visited: boolean[], currentSCC: number[]) => {
     visited[node] = true;
     currentSCC.push(node); // Add the node to the current SCC
     await highlightNode(node); // Highlight the current node
@@ -163,12 +173,12 @@ export default function KosarajuComponent() {
         </ul>
       </div>
 
-      {/* Technical overview of Kosaraju's Algorithm */}
+      {/* Technical overview of Kosaraju&apos;s Algorithm */}
       <div className="mt-8 p-4 rounded shadow-lg">
         <h3 className="text-2xl font-bold">Kosaraju&apos;s Algorithm - Technical Overview</h3>
-        <p className="mt-2"><strong>1. Algorithm Description:</strong> Kosaraju's Algorithm finds all strongly connected components (SCCs) of a directed graph.</p>
+        <p className="mt-2"><strong>1. Algorithm Description:</strong> Kosaraju&apos;s Algorithm finds all strongly connected components (SCCs) of a directed graph.</p>
 
-        <p className="mt-2"><strong>2. Steps of Kosaraju's Algorithm:</strong></p>
+        <p className="mt-2"><strong>2. Steps of Kosaraju&apos;s Algorithm:</strong></p>
         <ul className="list-disc list-inside">
           <li>Perform a DFS on the original graph to get the finishing times.</li>
           <li>Transpose (reverse) the graph.</li>
@@ -177,7 +187,7 @@ export default function KosarajuComponent() {
 
         <p className="mt-2"><strong>3. Time Complexity:</strong> O(V + E) where V is the number of vertices and E is the number of edges.</p>
         <p className="mt-2"><strong>4. Space Complexity:</strong> O(V) due to the storage of the stack and the visited array.</p>
-        <p className="mt-2"><strong>5. Usage:</strong> Kosaraju's Algorithm is used in network analysis, compilers, and various applications in graph theory.</p>
+        <p className="mt-2"><strong>5. Usage:</strong> Kosaraju&apos;s Algorithm is used in network analysis, compilers, and various applications in graph theory.</p>
       </div>
     </div>
   );

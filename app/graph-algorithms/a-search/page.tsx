@@ -25,7 +25,7 @@ const nodePositions = [
 ];
 
 export default function AStarComponent() {
-  const [graph, setGraph] = useState(initialGraph);
+  const [graph] = useState(initialGraph);
   const [visited, setVisited] = useState<boolean[]>(new Array(initialGraph.length).fill(false));
   const [path, setPath] = useState<number[]>([]); // To store the path taken
   const [animationSpeed] = useState(500); // Animation speed in milliseconds

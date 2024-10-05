@@ -19,10 +19,10 @@ const nodePositions = [
 ];
 
 export default function TarjanComponent() {
-  const [graph, setGraph] = useState(initialGraph);
+  const [graph] = useState(initialGraph);
   const [sccs, setSccs] = useState<number[][]>([]); // Store strongly connected components
-  const [index, setIndex] = useState<number>(0); // Current index for nodes
-  const [stack, setStack] = useState<number[]>([]); // Stack for Tarjan's algorithm
+  const [, setIndex] = useState<number>(0); // Current index for nodes
+  const [stack, setStack] = useState<number[]>([]); // Stack for Tarjan&apos;s algorithm
   const [lowLink, setLowLink] = useState<number[]>([]); // Low link values
   const [onStack, setOnStack] = useState<boolean[]>([]); // Track nodes on stack
   const [visited, setVisited] = useState<boolean[]>([]); // Track visited nodes
@@ -43,7 +43,7 @@ export default function TarjanComponent() {
     const newOnStack = [...onStack];
     const newVisited = [...visited];
     const newSccs: number[][] = [];
-    let newIndex = 0; // Reset index for each run
+    const newIndex = 0; // Reset index for each run
 
     // Update state to reflect the reset
     setIndex(0);
@@ -157,12 +157,12 @@ export default function TarjanComponent() {
         </ul>
       </div>
 
-      {/* Technical overview of Tarjan's Algorithm */}
+      {/* Technical overview of Tarjan&apos;s Algorithm */}
       <div className="mt-8 p-4 rounded shadow-lg">
         <h3 className="text-2xl font-bold">Tarjan&apos;s Algorithm - Technical Overview</h3>
-        <p className="mt-2"><strong>1. Algorithm Description:</strong> Tarjan's Algorithm finds all strongly connected components (SCCs) of a directed graph.</p>
+        <p className="mt-2"><strong>1. Algorithm Description:</strong> Tarjan&apos;s Algorithm finds all strongly connected components (SCCs) of a directed graph.</p>
 
-        <p className="mt-2"><strong>2. Steps of Tarjan's Algorithm:</strong></p>
+        <p className="mt-2"><strong>2. Steps of Tarjan&apos;s Algorithm:</strong></p>
         <ul className="list-disc list-inside">
           <li>Initialize an index and a low-link value for each node.</li>
           <li>Use a stack to track the nodes and mark nodes as visited.</li>
@@ -172,7 +172,7 @@ export default function TarjanComponent() {
 
         <p className="mt-2"><strong>3. Time Complexity:</strong> O(V + E) where V is the number of vertices and E is the number of edges.</p>
         <p className="mt-2"><strong>4. Space Complexity:</strong> O(V) due to the storage of indices, low-link values, and the stack.</p>
-        <p className="mt-2"><strong>5. Usage:</strong> Tarjan's Algorithm is used in network analysis, compilers, and various applications in graph theory.</p>
+        <p className="mt-2"><strong>5. Usage:</strong> Tarjan&apos;s Algorithm is used in network analysis, compilers, and various applications in graph theory.</p>
       </div>
     </div>
   );

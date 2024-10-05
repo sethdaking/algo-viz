@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 // Define the initial directed graph as an adjacency list
-const initialGraph = {
+const initialGraph: { [key: number]: number[] } = {
   0: [1, 2], // Node 0 -> Nodes 1 and 2
   1: [3],    // Node 1 -> Node 3
   2: [3],    // Node 2 -> Node 3
@@ -120,20 +120,21 @@ export default function TopologicalSortComponent() {
             );
           })}
         </svg>
-        <div className="mt-8 p-4 rounded shadow-lg">
-  <h3 className="text-2xl font-bold">Topological Sort - Technical Overview</h3>
-  <p className="mt-2"><strong>1. Definition:</strong> Topological sort is an ordering of the vertices in a directed acyclic graph (DAG) such that for every directed edge u → v, vertex u comes before vertex v.</p>
-  <p className="mt-2"><strong>2. Purpose:</strong> It is used for scheduling tasks, resolving dependencies, and organizing data.</p>
-  <p className="mt-2"><strong>3. Algorithm Steps:</strong></p>
-  <ul className="list-disc list-inside">
-    <li>Calculate in-degree for each vertex.</li>
-    <li>Enqueue vertices with in-degree of zero.</li>
-    <li>While the queue is not empty, dequeue a vertex and append it to the sorted order.</li>
-    <li>Decrease the in-degree of its neighbors. Enqueue any neighbor that reaches an in-degree of zero.</li>
-    <li>Check for cycles by comparing the sorted order&apos;s length to the number of vertices.</li>
-  </ul>
-  <p className="mt-2"><strong>4. Complexity:</strong> The time complexity is O(V + E), where V is the number of vertices and E is the number of edges.</p>
-</div>
+      </div>
+
+      <div className="mt-8 p-4 rounded shadow-lg">
+        <h3 className="text-2xl font-bold">Topological Sort - Technical Overview</h3>
+        <p className="mt-2"><strong>1. Definition:</strong> Topological sort is an ordering of the vertices in a directed acyclic graph (DAG) such that for every directed edge u → v, vertex u comes before vertex v.</p>
+        <p className="mt-2"><strong>2. Purpose:</strong> It is used for scheduling tasks, resolving dependencies, and organizing data.</p>
+        <p className="mt-2"><strong>3. Algorithm Steps:</strong></p>
+        <ul className="list-disc list-inside">
+          <li>Calculate in-degree for each vertex.</li>
+          <li>Enqueue vertices with in-degree of zero.</li>
+          <li>While the queue is not empty, dequeue a vertex and append it to the sorted order.</li>
+          <li>Decrease the in-degree of its neighbors. Enqueue any neighbor that reaches an in-degree of zero.</li>
+          <li>Check for cycles by comparing the sorted order&apos;s length to the number of vertices.</li>
+        </ul>
+        <p className="mt-2"><strong>4. Complexity:</strong> The time complexity is O(V + E), where V is the number of vertices and E is the number of edges.</p>
       </div>
     </div>
   );
